@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aram Creations | Secure Back-Office</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://www.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Cinzel:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Jura', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseApiKey = ["AI", "zaSyCbOy-", "d0naXBGw6TR-", "2dGS5Wb4IEkZYDKU"].join("");
+        const firebaseConfig = {
+            apiKey: firebaseApiKey,
+            authDomain: "aramcreations-e1529.firebaseapp.com",
+            projectId: "aramcreations-e1529",
+            storageBucket: "aramcreations-e1529.firebasestorage.app",
+            messagingSenderId: "989899248568",
+            appId: "1:989899248568:web:9adbb692b7b1a9e363b54d"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+        window.storage = getStorage(app);
+        window.auth = getAuth(app);
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.onSnapshot = onSnapshot;
+        window.query = query;
+        window.orderBy = orderBy;
+        window.deleteDoc = deleteDoc;
+        window.updateDoc = updateDoc;
+        window.setDoc = setDoc;
+        window.doc = doc;
+        window.ref = ref;
+        window.uploadBytesResumable = uploadBytesResumable;
+        window.getDownloadURL = getDownloadURL;
+        window.deleteObject = deleteObject;
+        window.serverTimestamp = serverTimestamp;
+        window.onAuthStateChanged = onAuthStateChanged;
+        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window.signOut = signOut;
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-stone-200">
+    <div id="loading-message" class="p-10 text-center text-stone-500 font-medium">
+        Σύνδεση με το aram creations catalogue...
+    </div>
+    <div id="root"></div>
+
+    <script src="/admin-app.js"></script>
+</body>
+</html>

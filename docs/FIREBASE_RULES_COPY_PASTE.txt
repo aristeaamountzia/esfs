@@ -1,0 +1,70 @@
+FIREBASE RULES - COPY / PASTE
+
+Your admin email:
+
+aristeaamnta@gmail.com
+
+1) FIRESTORE RULES
+
+Open Firebase Console:
+
+Firestore Database -> Rules
+
+Paste this:
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in [
+          "aristeaamnta@gmail.com"
+        ];
+    }
+
+    match /jewelry/{itemId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /settings/shop {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
+
+Then press Publish.
+
+2) STORAGE RULES
+
+Open Firebase Console:
+
+Storage -> Rules
+
+Paste this:
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in [
+          "aristeaamnta@gmail.com"
+        ];
+    }
+
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+  }
+}
+
+Then press Publish.

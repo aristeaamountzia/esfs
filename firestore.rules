@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public catalog items
+    match /jewelry/{itemId} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+    
+    // Shop settings
+    match /settings/{docId} {
+      allow read: if true;
+      allow write, delete: if request.auth != null;
+    }
+  }
+}

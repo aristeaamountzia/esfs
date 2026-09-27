@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "jewelry": {
+      "title": "Jewelry Product",
+      "description": "Handmade jewelry and crafts products",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "collection": { "type": "string" },
+        "status": { "type": "string" },
+        "price": { "type": "number" },
+        "cost": { "type": "number" },
+        "stock": { "type": "number" },
+        "shopOrder": { "type": "number" },
+        "description": { "type": "string" },
+        "notes": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "mediaList": { "type": "array" },
+        "materials": { "type": "array" },
+        "colors": { "type": "array" },
+        "platforms": { "type": "array" },
+        "productLinks": { "type": "array" },
+        "showInNewCollection": { "type": "boolean" },
+        "showInShop": { "type": "boolean" }
+      },
+      "required": ["name"]
+    },
+    "settings": {
+      "title": "Store Settings",
+      "description": "Store configuration and theme settings",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "categoryOrder": { "type": "array" }
+      },
+      "required": []
+    }
+  }
+}

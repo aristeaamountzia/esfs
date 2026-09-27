@@ -1,0 +1,131 @@
+ARAM CREATIONS - SECURE MOBILE BACK OFFICE
+
+Me apla logia:
+
+Netlify = site + online admin + AI function.
+Firebase = proionta/eikones/sigxronismos + login.
+Gemini/OpenAI keys = krimmena sto Netlify environment variables.
+
+TI PERIEXEI AUTOS O FAKELOS
+
+site/index.html
+  To dimosio site.
+
+site/logo.png
+  To logo.
+
+site/admin-aram-58142.html
+  To online secure back office.
+
+netlify/functions/backoffice-ai.mjs
+  To Back Office AI. Krataei ta API keys krimmena sto Netlify.
+
+netlify.toml
+  Leei sto Netlify na anevasei mono ton fakelo site kai na trexei functions apo netlify/functions.
+
+firebase-rules/firestore.rules
+firebase-rules/storage.rules
+  Templates gia asfaleis Firebase kanones.
+
+BHMA 1 - Firebase Auth
+
+1. Anoixe Firebase Console.
+2. Project: aramcreations-e1529.
+3. Authentication -> Sign-in method.
+4. Enable Email/Password.
+5. Authentication -> Users.
+6. Add user.
+7. Vale to email sou kai ena dynato password.
+
+BHMA 2 - Firebase Rules
+
+Anoixe:
+
+firebase-rules/firestore.rules
+firebase-rules/storage.rules
+
+Kai sta 2 arxeia allaxe:
+
+PUT-YOUR-ADMIN-EMAIL-HERE
+
+me to email pou evales sto Firebase Auth.
+
+Meta kane deploy/copy tous rules sto Firebase Console:
+
+Firestore Database -> Rules
+Storage -> Rules
+
+PROSOXI:
+An den allakseis tous rules, to login sto admin den einai pliros arketo.
+Oi rules einai auto pou kleidonei pragmatika ta writes.
+
+BHMA 3 - Netlify environment variables
+
+Sto Netlify:
+
+Site configuration -> Environment variables
+
+Vale:
+
+FIREBASE_PROJECT_ID=aramcreations-e1529
+ADMIN_EMAILS=to-email-sou@example.com
+GEMINI_API_KEY=to-gemini-key-sou
+AI_PROVIDER=gemini
+GEMINI_MODEL=gemini-2.5-flash-lite
+GEMINI_MODEL_ORDER=gemini-2.5-flash-lite,gemini-2.5-flash,gemini-2.0-flash-lite
+
+Optional fallback:
+
+OPENAI_API_KEY=to-openai-key-sou
+AI_PROVIDER=auto
+AI_PROVIDER_ORDER=gemini,openai
+OPENAI_MODEL=gpt-5-mini
+
+BHMA 4 - Deploy sto Netlify
+
+Gia na doulepsei kai to AI Function, protimame Git-connected Netlify deploy h Netlify CLI.
+
+Sto Netlify build settings:
+
+Base directory: keno
+Build command: keno
+Publish directory: site
+Functions directory: netlify/functions
+
+Meta deploy.
+
+TO ADMIN LINK
+
+Meta to deploy, to admin tha einai:
+
+https://TO-SITE-SOU.netlify.app/admin-aram-58142.html
+
+Anoigei kai apo kinito.
+
+THA ZHTAEI LOGIN
+
+Tha valeis to email/password pou eftiaxes sto Firebase Auth.
+
+AI STO ONLINE ADMIN
+
+To online admin den xrisimopoiei pia:
+
+http://127.0.0.1:8787
+
+Xrisimopoiei:
+
+/.netlify/functions/backoffice-ai
+
+Ara douleuei kai apo kinito, an exoun mpei sosta ta Netlify environment variables.
+
+POLY SIMANTIKO
+
+Mi valeis pote .env mesa se auton ton fakelo.
+Mi valeis API keys mesa sta HTML.
+Mi kaneis public to local ai-backend.
+
+AN KANEIS MONO DRAG AND DROP
+
+To dimosio site kai to admin page mporei na anevei.
+Alla to AI Function mporei na min doulepsei sosta me aplo drag/drop.
+Gia sosti Back Office AI leitourgia, xrisimopoihse Git-connected deploy h Netlify CLI.
